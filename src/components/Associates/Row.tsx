@@ -8,7 +8,7 @@ const Name = styled.span((props: { markRed: boolean}) => ({
   color: props.markRed? 'red' : 'black'
 }))
 
-export default function Footer({ associate }: { associate: Associate }) {
+export default function Row({ associate }: { associate: Associate }) {
 
   const hasNullAttributes = () => {
     return !Object.values(associate).every(v => v !== null);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -8,21 +8,23 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useHistory } from "react-router-dom";
+import LoginModal from '../LoginModal/LoginModal';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 1
-  }
+    flexGrow: 1,
+  },
 }));
 
 export default function MainMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [isOpenModal, setOpenModal] = useState(false);
   const classes = useStyles();
   const history = useHistory();
 
@@ -42,7 +44,17 @@ export default function MainMenu() {
     setAnchorEl(null);
     history.push("/");
   };
+  const openLoginModal = () => {
+    setAnchorEl(null);
+    setOpenModal(true);
+  }
 
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  }
+
+  console.log(isOpenModal, 'MainMenu');
+  
   return (
     <div className={classes.root}>
       <AppBar position="static" color="primary">
@@ -69,9 +81,11 @@ export default function MainMenu() {
         onClose={handleClose}
       >
         <MenuItem onClick={navigateToHome}>Home</MenuItem>
-        <MenuItem onClick={handleClose}>LogIn</MenuItem>
+        <MenuItem onClick={openLoginModal}>LogIn</MenuItem>
         <MenuItem onClick={navigateToAssociates}>Associates</MenuItem>
       </Menu>
+
+      <LoginModal open={isOpenModal} handleClosed={handleCloseModal}></LoginModal>
     </div>
   );
 }
