@@ -26,7 +26,7 @@ export default function MainMenu() {
   const classes = useStyles();
   const history = useHistory();
 
-  const handleClick = event => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
 
