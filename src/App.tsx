@@ -4,12 +4,12 @@ import "./App.css";
 import MainMenu from "./components/MainMenu/MainMenu";
 import HomePage from "./components/HomePage/HomePage";
 import Footer from "./components/Footer/Footer";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { unstable_createMuiStrictModeTheme, ThemeProvider } from "@material-ui/core/styles";
 import green from "@material-ui/core/colors/green";
 
 import Associates from "./components/Associates/Associates";
 
-const theme = createMuiTheme({
+const theme = unstable_createMuiStrictModeTheme({
   palette: {
     primary: {
       main: green[700]
