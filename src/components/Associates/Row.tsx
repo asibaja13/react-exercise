@@ -1,15 +1,24 @@
 import React from "react";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
+import styled from 'styled-components';
 import Associate from "../../interfaces/associate";
 
+const Name = styled.span((props: { markRed: boolean}) => ({
+  color: props.markRed? 'red' : 'black'
+}))
+
 export default function Footer({ associate }: { associate: Associate }) {
+
+  const hasNullAttributes = () => {
+    return !Object.values(associate).every(v => v !== null);
+  }
+
   return (
     <TableRow>
-      <TableCell>{associate.id}</TableCell>
-      <TableCell>{associate.first_name}</TableCell>
-      <TableCell>{associate.last_name}</TableCell>
-      <TableCell>{associate.email}</TableCell>
+      <TableCell>
+        <Name markRed={hasNullAttributes()}>{`${associate.first_name} ${associate.last_name}`}</Name>
+      </TableCell>
       <TableCell>{associate.Department}</TableCell>
     </TableRow>
   );

@@ -32,7 +32,7 @@ export default class Associates extends Component<Props, State> {
     const { associates } = this.state;
     return (
       <Paper>
-        <AssociatesTable associates={associates} />;
+        <AssociatesTable associates={associates} />
       </Paper>
     );
   }

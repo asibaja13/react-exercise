@@ -17,10 +17,7 @@ export default function AssociatesTable(props: { associates: Array<Associate>}) 
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell>First Name</TableCell>
-            <TableCell>Last Name</TableCell>
-            <TableCell>Email</TableCell>
+            <TableCell>Name</TableCell>
             <TableCell>Department</TableCell>
           </TableRow>
         </TableHead>

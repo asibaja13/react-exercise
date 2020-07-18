@@ -75,7 +75,7 @@ export default function Home() {
                         <Avatar>1</Avatar>
                     </Grid>
                     <Grid item xs>
-                        <Typography>
+                        <Typography component={'div'}>
                           <strong>{ `User List`}</strong>
                           <ul>
                            <li>
@@ -104,7 +104,7 @@ export default function Home() {
                         <Avatar>2</Avatar>
                     </Grid>
                     <Grid item xs>
-                        <Typography>
+                        <Typography component={'div'}>
                          <strong>{ `Login Modal:`}</strong> 
                           <ul>
                            <li>
@@ -124,7 +124,7 @@ export default function Home() {
                         <Avatar>3</Avatar>
                     </Grid>
                     <Grid item xs>
-                        <Typography>
+                        <Typography component={'div'}>
                          <strong>{ `Create login/logout logic:`}</strong> 
                           <ul>
                            <li>
@@ -150,7 +150,7 @@ export default function Home() {
                         <Avatar>4</Avatar>
                     </Grid>
                     <Grid item xs>
-                        <Typography>
+                        <Typography component={'div'}>
                          <strong>{ `Send your code!!!`}</strong> 
                           <ol>
                            <li>
@@ -170,7 +170,7 @@ export default function Home() {
                         <Avatar>!!!</Avatar>
                     </Grid>
                     <Grid item xs>
-                        <Typography>
+                        <Typography component={'div'}>
                          <strong>{ `IF YOU WANT EXTRA POINTS!!!`}</strong> 
                           <ul>
                            <li>
