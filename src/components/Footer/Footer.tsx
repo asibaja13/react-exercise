@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AuthButton from "../AuthButton/AuthButton";
+import { SelectedAssociateContext } from "../../context/SelectedAssociates";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Footer() {
+  const selectedAssociate = useContext(SelectedAssociateContext);
   const classes = useStyles();
 
   return (
@@ -23,6 +25,9 @@ export default function Footer() {
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             <AuthButton showButton={true}></AuthButton>
+          </Typography>
+          <Typography>
+            {`${selectedAssociate.associate?.first_name} ${selectedAssociate.associate?.last_name} ${selectedAssociate.associate?.email}` }
           </Typography>
         </Toolbar>
       </AppBar>

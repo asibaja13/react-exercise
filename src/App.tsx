@@ -14,6 +14,7 @@ import Associates from "./components/Associates/Associates";
 import { AuthProvider } from "./context/AuthContext";
 import { LoginModalProvider } from "./context/LoginModalContext";
 import AssociatesRoute from "./components/Associates/AssociatesRoute";
+import { SelectedAssociateProvider } from "./context/SelectedAssociates";
 
 const theme = unstable_createMuiStrictModeTheme({
   palette: {
@@ -29,13 +30,15 @@ function App() {
         <AuthProvider>
           <LoginModalProvider>
             <MainMenu />
-            <Switch>
-              <Route path="/" exact component={HomePage} />
-              <AssociatesRoute path="/associates">
-                <Associates />
-              </AssociatesRoute>
-            </Switch>
-            <Footer />
+            <SelectedAssociateProvider>
+              <Switch>
+                <Route path="/" exact component={HomePage} />
+                <AssociatesRoute path="/associates">
+                  <Associates />
+                </AssociatesRoute>
+              </Switch>
+              <Footer />
+            </SelectedAssociateProvider>
           </LoginModalProvider>
         </AuthProvider>
       </ThemeProvider>
