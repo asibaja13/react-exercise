@@ -58,10 +58,6 @@ export default function MainMenu() {
     }
   };
 
-  const getLoginModalValue = () => {
-    return loginModal.open ? loginModal.open : false;
-  };
-
   return (
     <div className={classes.root}>
       <AppBar position="static" color="primary">
@@ -99,7 +95,7 @@ export default function MainMenu() {
       </Menu>
 
       <LoginModal
-        open={getLoginModalValue()}
+        open={!!loginModal.open}
         handleClosed={handleCloseModal}
       ></LoginModal>
     </div>
