@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Footer() {
   const classes = useStyles();
-  
+
   return (
     <div className={classes.root}>
       <AppBar position="static">

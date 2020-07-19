@@ -8,7 +8,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useHistory } from "react-router-dom";
-import LoginModal from '../LoginModal/LoginModal';
+import LoginModal from "../LoginModal/LoginModal";
 import { AuthContext } from "../../context/AuthContext";
 import { LoginModalContext } from "../../context/LoginModalContext";
 import AuthButton from "../AuthButton/AuthButton";
@@ -50,17 +50,17 @@ export default function MainMenu() {
   };
   const authButtonClicked = () => {
     setAnchorEl(null);
-  }
+  };
 
   const handleCloseModal = () => {
     if (loginModal.setOpen) {
-      loginModal.setOpen(false);   
+      loginModal.setOpen(false);
     }
-  }
+  };
 
   const getLoginModalValue = () => {
-    return loginModal.open ? loginModal.open : false ;
-  }
+    return loginModal.open ? loginModal.open : false;
+  };
 
   return (
     <div className={classes.root}>
@@ -76,7 +76,9 @@ export default function MainMenu() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            {auth.username? `Welcome! ${auth.username}` : 'Welcome! Please Login.'}
+            {auth.username
+              ? `Welcome! ${auth.username}`
+              : "Welcome! Please Login."}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -91,11 +93,15 @@ export default function MainMenu() {
         <MenuItem onClick={authButtonClicked}>
           <AuthButton showButton={false}></AuthButton>
         </MenuItem>
-        {auth.username? (<MenuItem onClick={navigateToAssociates}>Associates</MenuItem>) : null}
-        
+        {auth.username ? (
+          <MenuItem onClick={navigateToAssociates}>Associates</MenuItem>
+        ) : null}
       </Menu>
 
-      <LoginModal open={getLoginModalValue()} handleClosed={handleCloseModal}></LoginModal>
+      <LoginModal
+        open={getLoginModalValue()}
+        handleClosed={handleCloseModal}
+      ></LoginModal>
     </div>
   );
 }

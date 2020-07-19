@@ -18,7 +18,7 @@ export default function AuthButton(props: { showButton: boolean }) {
   const handleLogout = () => {
     if (loginModal.setOpen && auth.setLogin) {
       auth.setLogin("");
-      history.push('/');
+      history.push("/");
     }
   };
 
@@ -33,7 +33,7 @@ export default function AuthButton(props: { showButton: boolean }) {
       </>
     );
   }
-  
+
   return (
     <>
       {auth.username ? (

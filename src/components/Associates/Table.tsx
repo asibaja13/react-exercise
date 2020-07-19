@@ -6,12 +6,14 @@ import {
   Paper,
   TableHead,
   TableCell,
-  TableBody
+  TableBody,
 } from "@material-ui/core";
 import Row from "./Row";
 import Associate from "../../interfaces/associate";
 
-export default function AssociatesTable(props: { associates: Array<Associate>}) {
+export default function AssociatesTable(props: {
+  associates: Array<Associate>;
+}) {
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -22,7 +24,7 @@ export default function AssociatesTable(props: { associates: Array<Associate>}) 
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.associates.map(associate => (
+          {props.associates.map((associate) => (
             <Row associate={associate} key={associate.id} />
           ))}
         </TableBody>
