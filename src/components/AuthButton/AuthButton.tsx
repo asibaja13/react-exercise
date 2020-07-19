@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
 import { AuthContext } from "../../context/AuthContext";
 import { LoginModalContext } from "../../context/LoginModalContext";
+import { useHistory } from "react-router-dom";
 
 export default function AuthButton(props: { showButton: boolean }) {
   const auth = useContext(AuthContext);
+  const history = useHistory();
   const loginModal = useContext(LoginModalContext);
 
   const handleLogin = () => {
@@ -16,6 +18,7 @@ export default function AuthButton(props: { showButton: boolean }) {
   const handleLogout = () => {
     if (loginModal.setOpen && auth.setLogin) {
       auth.setLogin("");
+      history.push('/');
     }
   };
 

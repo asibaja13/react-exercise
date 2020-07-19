@@ -91,7 +91,8 @@ export default function MainMenu() {
         <MenuItem onClick={authButtonClicked}>
           <AuthButton showButton={false}></AuthButton>
         </MenuItem>
-        <MenuItem onClick={navigateToAssociates}>Associates</MenuItem>
+        {auth.username? (<MenuItem onClick={navigateToAssociates}>Associates</MenuItem>) : null}
+        
       </Menu>
 
       <LoginModal open={getLoginModalValue()} handleClosed={handleCloseModal}></LoginModal>
