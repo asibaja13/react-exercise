@@ -5,6 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AuthButton from "../AuthButton/AuthButton";
 import { SelectedAssociateContext } from "../../context/SelectedAssociates";
+import { AuthContext } from "../../context/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Footer() {
   const selectedAssociate = useContext(SelectedAssociateContext);
+  const auth = useContext(AuthContext);
   const classes = useStyles();
 
   return (
@@ -27,7 +29,7 @@ export default function Footer() {
             <AuthButton showButton={true}></AuthButton>
           </Typography>
           <Typography>
-            {`${selectedAssociate.associate?.first_name} ${selectedAssociate.associate?.last_name} ${selectedAssociate.associate?.email}` }
+            {auth.username && selectedAssociate.associate?.first_name? `${selectedAssociate.associate?.first_name} ${selectedAssociate.associate?.last_name} ${selectedAssociate.associate?.email}` : '' }
           </Typography>
         </Toolbar>
       </AppBar>

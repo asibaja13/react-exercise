@@ -27,9 +27,13 @@ export default class Associates extends Component<Props, State> {
   render() {
     const { associates } = this.state;
     return (
-      <Paper>
+      <Paper style={paperStyles}>
         <AssociatesTable associates={associates} />
       </Paper>
     );
   }
+}
+
+const paperStyles = {
+  padding: "48px"
 }

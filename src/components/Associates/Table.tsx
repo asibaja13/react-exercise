@@ -15,8 +15,8 @@ export default function AssociatesTable(props: {
   associates: Array<Associate>;
 }) {
   return (
-    <TableContainer component={Paper}>
-      <Table>
+    <TableContainer component={Paper} style={tableContainer}>
+      <Table stickyHeader >
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
@@ -31,4 +31,9 @@ export default function AssociatesTable(props: {
       </Table>
     </TableContainer>
   );
+}
+
+const tableContainer = {
+  width: "50%",
+  margin: "0 auto"
 }
