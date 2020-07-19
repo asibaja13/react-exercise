@@ -24,6 +24,12 @@ export default function LoginModal(props: {
     if (auth.setLogin) {
       auth.setLogin(username);
     }
+    setUsername("");
+    props.handleClosed();
+  };
+
+  const handleCancel = () => {
+    setUsername("");
     props.handleClosed();
   };
 
@@ -41,7 +47,7 @@ export default function LoginModal(props: {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => props.handleClosed()} color="secondary">
+          <Button onClick={handleCancel} color="secondary">
             Cancel
           </Button>
           <Button onClick={handleLogin} color="primary" autoFocus>

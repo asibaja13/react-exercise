@@ -10,6 +10,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { useHistory } from "react-router-dom";
 import LoginModal from '../LoginModal/LoginModal';
 import { AuthContext } from "../../context/AuthContext";
+import { LoginModalContext } from "../../context/LoginModalContext";
+import AuthButton from "../AuthButton/AuthButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MainMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [isOpenModal, setOpenModal] = useState(false);
   const auth = useContext(AuthContext);
+  const loginModal = useContext(LoginModalContext);
   const classes = useStyles();
   const history = useHistory();
 
@@ -46,13 +48,18 @@ export default function MainMenu() {
     setAnchorEl(null);
     history.push("/");
   };
-  const openLoginModal = () => {
+  const authButtonClicked = () => {
     setAnchorEl(null);
-    setOpenModal(true);
   }
 
   const handleCloseModal = () => {
-    setOpenModal(false);
+    if (loginModal.setOpen) {
+      loginModal.setOpen(false);   
+    }
+  }
+
+  const getLoginModalValue = () => {
+    return loginModal.open ? loginModal.open : false ;
   }
 
   return (
@@ -81,11 +88,13 @@ export default function MainMenu() {
         onClose={handleClose}
       >
         <MenuItem onClick={navigateToHome}>Home</MenuItem>
-        <MenuItem onClick={openLoginModal}>LogIn</MenuItem>
+        <MenuItem onClick={authButtonClicked}>
+          <AuthButton></AuthButton>
+        </MenuItem>
         <MenuItem onClick={navigateToAssociates}>Associates</MenuItem>
       </Menu>
 
-      <LoginModal open={isOpenModal} handleClosed={handleCloseModal}></LoginModal>
+      <LoginModal open={getLoginModalValue()} handleClosed={handleCloseModal}></LoginModal>
     </div>
   );
 }
