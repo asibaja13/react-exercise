@@ -1,8 +1,10 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import React, { useContext } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import { AuthContext } from "../../context/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,12 +16,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Footer() {
+  const auth = useContext(AuthContext);
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
+            {auth.username ? (
+              <Button variant="contained">Logout</Button>
+            ) : (
+              <Button variant="contained">Login</Button>
+            )}
           </Typography>
         </Toolbar>
       </AppBar>

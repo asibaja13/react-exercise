@@ -8,6 +8,7 @@ import { unstable_createMuiStrictModeTheme, ThemeProvider } from "@material-ui/c
 import green from "@material-ui/core/colors/green";
 
 import Associates from "./components/Associates/Associates";
+import { AuthProvider } from "./context/AuthContext";
 
 const theme = unstable_createMuiStrictModeTheme({
   palette: {
@@ -20,12 +21,14 @@ function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <MainMenu />
-        <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/associates" component={Associates} />
-        </Switch>
-        <Footer />
+        <AuthProvider>
+          <MainMenu />
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/associates" component={Associates} />
+          </Switch>
+          <Footer />
+        </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>
   );

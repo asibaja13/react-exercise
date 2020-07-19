@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -9,6 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useHistory } from "react-router-dom";
 import LoginModal from '../LoginModal/LoginModal';
+import { AuthContext } from "../../context/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 export default function MainMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [isOpenModal, setOpenModal] = useState(false);
+  const auth = useContext(AuthContext);
   const classes = useStyles();
   const history = useHistory();
 
@@ -53,8 +55,6 @@ export default function MainMenu() {
     setOpenModal(false);
   }
 
-  console.log(isOpenModal, 'MainMenu');
-  
   return (
     <div className={classes.root}>
       <AppBar position="static" color="primary">
@@ -69,7 +69,7 @@ export default function MainMenu() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Welcome! Please Login.
+            {auth.username? `Welcome! ${auth.username}` : 'Welcome! Please Login.'}
           </Typography>
         </Toolbar>
       </AppBar>
