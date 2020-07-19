@@ -22,7 +22,7 @@ export default function Footer() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            <AuthButton></AuthButton>
+            <AuthButton showButton={true}></AuthButton>
           </Typography>
         </Toolbar>
       </AppBar>

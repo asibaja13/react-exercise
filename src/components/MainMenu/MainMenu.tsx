@@ -89,7 +89,7 @@ export default function MainMenu() {
       >
         <MenuItem onClick={navigateToHome}>Home</MenuItem>
         <MenuItem onClick={authButtonClicked}>
-          <AuthButton></AuthButton>
+          <AuthButton showButton={false}></AuthButton>
         </MenuItem>
         <MenuItem onClick={navigateToAssociates}>Associates</MenuItem>
       </Menu>
